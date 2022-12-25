@@ -37,12 +37,47 @@
    </style>
    <script>
       //function gcv(n){var b = document.cookie.match('(^|[^;]+)\\s*' + n + '\\s*=\\s*([^;]+)');return b ? b.pop() : '';}
-      function rvk(){
-        window.open('https://vk.com/seeklay', '_blank');
+     
+      const titles = ['SeekLay', 'シークレイ']
+      let title = titles[0]
+      function getRandomInt(max) {
+        return Math.floor(Math.random() * max);
       }
-      function rgh(){
-        window.open('https://github.com/seeklay', '_blank');
+      function opn(url){
+        window.open(url, '_blank')
       }
+      $(document).ready(function() {
+        document.getElementsByClassName('title')[0].textContent = titles[getRandomInt(2)]
+      })
+      var i = 0
+      var d = 1
+      let t = 0
+        
+      setInterval(function(){
+          
+          if (d){
+              //console.log('d pos, inc')
+              document.title = title.slice(0, i) + '|'
+              i ++
+          }else{
+              //console.log('d neg, dec')
+              document.title = title.slice(0, i) + ' <'
+              i --
+          }
+          if (i == title.length){
+              //console.log('i == len, cng dir backw')
+              d = 0
+          }
+          if (i == 0){
+              //console.log('i == 0, cng dir forw')
+              d = 1
+              t ++
+              if (t == titles.length){
+                  t = 0
+              }
+              title = titles[t]
+          }
+      }, 273)
 
    </script>
  </head>
@@ -51,18 +86,15 @@
 <div class='papper'>
   <span class='title'>SeekLay</span>
    <div class='links'>
-    <span class='link' onclick="rvk()" ondblclick="rvk()"><i class="fa fa-vk" aria-hidden="true"></i></span>
-    <span class='link' onclick="rgh()" ondblclick="rgh()"><i class="fa fa-github" aria-hidden="true"></i></span>
+    <span class='link' onclick='opn("https://youtube.com/@seeklay")'><i class="fa fa-youtube"></i></span>
+    <span class='link' onclick='opn("https://twitch.tv/neseeklay")'><i class="fa fa-twitch"></i></span>
+    <span class='link' onclick='opn("https://vk.com/seeklay/")'><i class="fa fa-vk" aria-hidden="true"></i></span>
+    <span class='link' onclick='opn("https://github.com/seeklay/")'><i class="fa fa-github" aria-hidden="true"></i></span>
+    <span class='link' onclick='opn("https://gitlab.com/seeklay/")'><i class="fa fa-gitlab" aria-hidden="true"></i></span>
    </div>
 </div>
 <span style="font-family: 'Darker Grotesque', sans-serif;text-align:center;">invisible</span>
 </body>
-
-
-
-
-
-
 
 <script>'use strict';
 
@@ -488,13 +520,13 @@ canvas.addEventListener( 'touchmove', function ( e ) {
 
 }, false );
     window.onkeydown = function(evt) {
-        if(evt.keyCode == 123 || evt.keyCode == 85 || evt.keyCode == 17 || evt.keyCode == 16 || evt.keyCode == 74 || evt.keyCode == 116 || evt.keyCode == 73) return false;
+        if(evt.keyCode == 123 || evt.keyCode == 85 || evt.keyCode == 17 || evt.keyCode == 16 || evt.keyCode == 74 || evt.keyCode == 73) return false;
     };
 
     window.onkeypress = function(evt) {
-        if(evt.keyCode == 123 || evt.keyCode == 85 || evt.keyCode == 17 || evt.keyCode == 16 || evt.keyCode == 74 || evt.keyCode == 116 || evt.keyCode == 73) return false;
+        if(evt.keyCode == 123 || evt.keyCode == 85 || evt.keyCode == 17 || evt.keyCode == 16 || evt.keyCode == 74 || evt.keyCode == 73) return false;
     };
 
-function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
-$(document).on("keydown", disableF5);
+//function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };
+//$(document).on("keydown", disableF5);
 </script>
