@@ -24,6 +24,7 @@
        .links{
          color: white;
          text-align: center;
+         transform: translate(-6%, 50%);
          font-size: 28px;
        }
        .link{
@@ -86,11 +87,24 @@
 <div class='papper'>
   <span class='title'>SeekLay</span>
    <div class='links'>
-    <span class='link' onclick='opn("https://youtube.com/@seeklay")'><i class="fa fa-youtube"></i></span>
-    <span class='link' onclick='opn("https://twitch.tv/neseeklay")'><i class="fa fa-twitch"></i></span>
-    <span class='link' onclick='opn("https://vk.com/seeklay/")'><i class="fa fa-vk" aria-hidden="true"></i></span>
-    <span class='link' onclick='opn("https://github.com/seeklay/")'><i class="fa fa-github" aria-hidden="true"></i></span>
-    <span class='link' onclick='opn("https://gitlab.com/seeklay/")'><i class="fa fa-gitlab" aria-hidden="true"></i></span>
+    <a data-toggle="tooltip" title="YouTube channel">
+        <span class='link' onclick='opn("https://youtube.com/@seeklay")'><i class="fa fa-youtube"></i></span>
+    </a>
+    <a data-toggle="tooltip" title="Twitch">
+        <span class='link' onclick='opn("https://twitch.tv/neseeklay")'><i class="fa fa-twitch"></i></span>
+    </a>
+    <a data-toggle="tooltip" title="VK">
+        <span class='link' onclick='opn("https://vk.com/seeklay/")'><i class="fa fa-vk" aria-hidden="true"></i></span>
+    </a>
+    <a data-toggle="tooltip" title="GitHub">
+        <span class='link' onclick='opn("https://github.com/seeklay/")'><i class="fa fa-github" aria-hidden="true"></i></span>
+    </a>    
+    <a data-toggle="tooltip" title="GitLab">
+        <span class='link' onclick='opn("https://gitlab.com/seeklay/")'><i class="fa fa-gitlab" aria-hidden="true"></i></span>
+    </a>   
+    <a data-toggle="tooltip" title="Telegram channel">
+        <span class='link' onclick='opn("https://t.me/neseeklay/")'><i class="fa fa-telegram"></i></span>
+    </a>
    </div>
 </div>
 <span style="font-family: 'Darker Grotesque', sans-serif;text-align:center;">invisible</span>
