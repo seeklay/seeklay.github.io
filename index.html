@@ -6,104 +6,116 @@
    <link rel="shortcut icon"  href="/favicon.ico"/>
    <link rel="shortcut icon"  href="https://seeklay.github.io/favicon.ico"/>
    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
    <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque|Mansalva&display=swap" rel="stylesheet">
    <style>
+       
        .papper{
+        
        -webkit-user-select: none;
        position: absolute;
        top: 50%;
        font-size: 60px;
        left: 50%;
        padding:30px;
-       transform: translate(-50%, -50%);}
-       .title{
-         font-family: 'Mansalva', cursive;
+       transform: translate(-50%, -50%);
+       text-align: center;
+       font-size: 4vh;
+    }
+       .title{        
+        font-family: 'Mansalva', cursive;
          color: white;
+         font-size: 4.3vh;
        }
        .links{
          color: white;
-         text-align: center;
-         transform: translate(-6%, 50%);
-         font-size: 28px;
+         text-align: center;                  
        }
        .link{
          padding:4;
        }
-       .link:hover{
-         color:#03a9f4;
+       .link:hover{         
          cursor:pointer;
+       }
+       .fa-twitch:hover{
+            color:  #6441a5;
+       }
+       .fa-vk:hover{
+            color: #0077FF;
+       }
+       .fa-youtube:hover{
+            color: #FF0000;
+       }
+       .fa-github:hover{
+            color: #edeae1;
+       }
+       .fa-gitlab:hover{
+            color: #FCA326;
+       }
+       .fa-telegram:hover{
+            color:#0088cc;
        }
 
    </style>
-   <script>
-      //function gcv(n){var b = document.cookie.match('(^|[^;]+)\\s*' + n + '\\s*=\\s*([^;]+)');return b ? b.pop() : '';}
-     
-      const titles = ['SeekLay', 'シークレイ']
-      let title = titles[0]
-      function getRandomInt(max) {
-        return Math.floor(Math.random() * max);
-      }
-      function opn(url){
-        window.open(url, '_blank')
-      }
-      $(document).ready(function() {
-        document.getElementsByClassName('title')[0].textContent = titles[getRandomInt(2)]
-      })
-      var i = 0
-      var d = 1
-      let t = 0
-        
-      setInterval(function(){
-          
-          if (d){
-              //console.log('d pos, inc')
-              document.title = title.slice(0, i) + '|'
-              i ++
-          }else{
-              //console.log('d neg, dec')
-              document.title = title.slice(0, i) + ' <'
-              i --
-          }
-          if (i == title.length){
-              //console.log('i == len, cng dir backw')
-              d = 0
-          }
-          if (i == 0){
-              //console.log('i == 0, cng dir forw')
-              d = 1
-              t ++
-              if (t == titles.length){
-                  t = 0
-              }
-              title = titles[t]
-          }
-      }, 273)
+<script> 
 
-   </script>
- </head>
+function writeTitle(title, speed){
+    let i = 0;
 
+    writingInterval = setInterval(function(){                
+        if (i == title.length){                    
+            document.title = title;
+            clearInterval(writingInterval);
+            return;
+        }                
+        document.title = title.slice(0, i) + "|";
+        i++;                
+    }, speed)
+}
+
+const titles = ['SeekLay', 'シークレイ'];
+    
+function getRandomInt(max){
+    return Math.floor(Math.random() * max);
+}
+
+function o(url){
+    window.open(url, '_blank');
+}
+
+title = titles[getRandomInt(2)];
+
+writeTitle(title, 273);
+
+$(document).ready(function(){
+    document.getElementsByClassName('title')[0].textContent = title;
+})
+
+</script>
+
+</head>
 <canvas id="canvas" width="100%" height="100%" style='width: 100%; height: 100%; position: absolute;top: 0;bottom: 0;right: 0;left: 0;'></canvas>
 <div class='papper'>
   <span class='title'>SeekLay</span>
    <div class='links'>
     <a data-toggle="tooltip" title="YouTube channel">
-        <span class='link' onclick='opn("https://youtube.com/@seeklay")'><i class="fa fa-youtube"></i></span>
+        <span class='link' onclick='o("https://youtube.com/@seeklay")'><i class="fa-brands fa-youtube"></i></span>
     </a>
     <a data-toggle="tooltip" title="Twitch">
-        <span class='link' onclick='opn("https://twitch.tv/neseeklay")'><i class="fa fa-twitch"></i></span>
+        <span class='link' onclick='o("https://twitch.tv/neseeklay")'><i class="fa-brands fa-twitch"></i></span>
     </a>
     <a data-toggle="tooltip" title="VK">
-        <span class='link' onclick='opn("https://vk.com/seeklay/")'><i class="fa fa-vk" aria-hidden="true"></i></span>
+        <span class='link' onclick='o("https://vk.com/seeklay/")'><i class="fa-brands fa-vk" aria-hidden="true"></i></span>
     </a>
     <a data-toggle="tooltip" title="GitHub">
-        <span class='link' onclick='opn("https://github.com/seeklay/")'><i class="fa fa-github" aria-hidden="true"></i></span>
+        <span class='link' onclick='o("https://github.com/seeklay/")'><i class="fa-brands fa-github" aria-hidden="true"></i></span>
     </a>    
     <a data-toggle="tooltip" title="GitLab">
-        <span class='link' onclick='opn("https://gitlab.com/seeklay/")'><i class="fa fa-gitlab" aria-hidden="true"></i></span>
+        <span class='link' onclick='o("https://gitlab.com/seeklay/")'><i class="fa-brands fa-gitlab" aria-hidden="true"></i></span>
     </a>   
     <a data-toggle="tooltip" title="Telegram channel">
-        <span class='link' onclick='opn("https://t.me/neseeklay/")'><i class="fa fa-telegram"></i></span>
+        <span class='link' onclick='o("https://t.me/neseeklay/")'><i class="fa-brands fa-telegram"></i></span>
     </a>
    </div>
 </div>
