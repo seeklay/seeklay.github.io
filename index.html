@@ -17,11 +17,10 @@
        position: absolute;
        top: 50%;
        font-size: 60px;
-       left: 50%;
-       padding:30px;
+       left: 50%;       
        transform: translate(-50%, -50%);
        text-align: center;
-       font-size: 4vh;
+       font-size: 4.3vh;
     }
        .title{        
         font-family: 'Mansalva', cursive;
@@ -47,14 +46,14 @@
        .fa-youtube:hover{
             color: #FF0000;
        }
-       .fa-github:hover{
-            color: #edeae1;
-       }
        .fa-gitlab:hover{
             color: #FCA326;
        }
        .fa-telegram:hover{
             color:#0088cc;
+       }
+       .fa-instagram:hover{
+            color: #E1306C;      
        }
 
    </style>
@@ -99,19 +98,19 @@ $(document).ready(function(){
 <div class='papper'>
   <span class='title'>SeekLay</span>
    <div class='links'>
+    <a data-toggle="tooltip" title="VK Page">
+        <span class='link' onclick='o("https://vk.com/seeklay/")'><i class="fa-brands fa-vk" aria-hidden="true"></i></span>
+    </a>
     <a data-toggle="tooltip" title="YouTube channel">
         <span class='link' onclick='o("https://youtube.com/@seeklay")'><i class="fa-brands fa-youtube"></i></span>
     </a>
-    <a data-toggle="tooltip" title="Twitch">
+    <a data-toggle="tooltip" title="Twitch Channel">
         <span class='link' onclick='o("https://twitch.tv/neseeklay")'><i class="fa-brands fa-twitch"></i></span>
     </a>
-    <a data-toggle="tooltip" title="VK">
-        <span class='link' onclick='o("https://vk.com/seeklay/")'><i class="fa-brands fa-vk" aria-hidden="true"></i></span>
+    <a data-toggle="tooltip" title="Instagram Page">
+        <span class='link' onclick='o("http://instagram.com/neseeklay")'><i class="fa-brands fa-instagram"></i></span>
     </a>
-    <a data-toggle="tooltip" title="GitHub">
-        <span class='link' onclick='o("https://github.com/seeklay/")'><i class="fa-brands fa-github" aria-hidden="true"></i></span>
-    </a>    
-    <a data-toggle="tooltip" title="GitLab">
+    <a data-toggle="tooltip" title="GitLab Page">
         <span class='link' onclick='o("https://gitlab.com/seeklay/")'><i class="fa-brands fa-gitlab" aria-hidden="true"></i></span>
     </a>   
     <a data-toggle="tooltip" title="Telegram channel">
