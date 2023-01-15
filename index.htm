@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon"  href="favicon.ico" />
     <link rel="shortcut icon" type="image/png" href="favicon.png" />
-    <meta name="description" content="мой крутейший сайтик с ссылочками" />
+    <meta name="description" content="seeklay's personal site"/>
     <meta name="keywords" content="seeklay" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />    
     <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque|Mansalva&display=swap" rel="stylesheet" />
 
     <!-- Google tag (gtag.js) -->
@@ -19,9 +19,43 @@
         gtag('js', new Date());
         gtag('config', 'G-EM2ZT4VLVD');
     </script>
-    
+    <script>
+        const titles = ['SeekLay', 'シークレイ'];
+
+        function writeTitle(title, speed){
+            let i = 0;
+            writingInterval = setInterval(() => {
+                if (i == title.length){          
+                    document.title = title;
+                    clearInterval(writingInterval);
+                    return;
+                }                
+                document.title = title.slice(0, i) + "|";
+                i++;                
+            }, speed)
+        }        
+
+        function getRandomInt(max){
+            return Math.floor(Math.random() * max);
+        }
+
+        title = titles[getRandomInt(2)];
+        writeTitle(title, 273);
+
+        window.addEventListener("load", () => {
+            document.getElementById('title').textContent = title;
+        });
+
+        window.onkeydown = (e) => {
+            if(e.keyCode == 123 || e.keyCode == 85 || e.keyCode == 17 || e.keyCode == 16 || e.keyCode == 74 || e.keyCode == 73) return false;
+        };
+
+        window.onkeypress = (e) => {
+            if(e.keyCode == 123 || e.keyCode == 85 || e.keyCode == 17 || e.keyCode == 16 || e.keyCode == 74 || e.keyCode == 73) return false;
+        };
+    </script>
     <style>
-        .foreground{
+        #foreground{
             -webkit-user-select: none;
             position: absolute;
             top: 50%;
@@ -31,12 +65,12 @@
             text-align: center;
             font-size: 4.3vh;
         }
-        .title{
+        #title{
             font-family: 'Mansalva', cursive;
             color: white;
             font-size: 4.7vh;
         }
-        .links{
+        #links{
             color: white;
             text-align: center;
         }
@@ -72,49 +106,40 @@
             color: inherit;
             text-decoration: none;
         }
-    </style>
-
-    <script>
-        const titles = ['SeekLay', 'シークレイ'];
-
-        function writeTitle(title, speed){
-            let i = 0;
-            writingInterval = setInterval(() => {
-                if (i == title.length){          
-                    document.title = title;
-                    clearInterval(writingInterval);
-                    return;
-                }                
-                document.title = title.slice(0, i) + "|";
-                i++;                
-            }, speed)
-        }        
-
-        function getRandomInt(max){
-            return Math.floor(Math.random() * max);
+        #bg{
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('Konachan_com_224904_animal_ball_barefoot_bikini_flowers_fox_foxgirl.jpg');
+            background-size: cover;            
+            background-position: top;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
         }
-
-        title = titles[getRandomInt(2)];
-        writeTitle(title, 273);
-
-        window.addEventListener("load", () => {
-            document.getElementsByClassName('title')[0].textContent = title;
-        });
-
-        window.onkeydown = (e) => {
-            if(e.keyCode == 123 || e.keyCode == 85 || e.keyCode == 17 || e.keyCode == 16 || e.keyCode == 74 || e.keyCode == 73) return false;
-        };
-
-        window.onkeypress = (e) => {
-            if(e.keyCode == 123 || e.keyCode == 85 || e.keyCode == 17 || e.keyCode == 16 || e.keyCode == 74 || e.keyCode == 73) return false;
-        };
-    </script>
+        #canvas{
+            opacity: 0.7;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+        body{
+            cursor: crosshair;
+        }
+    </style>
 </head>
-<body oncontextmenu="return false;" style='cursor: crosshair;'>
-    <canvas id="canvas" width="100%" height="100%" style='width: 100%; height: 100%; position: absolute;top: 0;bottom: 0;right: 0;left: 0;'></canvas>
-    <div class="foreground">
-        <span class="title">SeekLay</span>
-        <div class="links">
+<body oncontextmenu="return false;">
+    <div id="bg">
+    <canvas id="canvas"></canvas>
+    </div>
+    <div id="foreground">
+        <span id="title">SeekLay</span>
+        <div id="links">
             <a href="https://vk.com/seeklay/" data-toggle="tooltip" title="VK Page" class="link">
                 <i class="fa-brands fa-vk" aria-hidden="true"></i>
             </a>
@@ -133,7 +158,7 @@
             <a href="https://t.me/neseeklay/" data-toggle="tooltip" title="Telegram channel" class="link">
                 <i class="fa-brands fa-telegram"></i>
             </a>
-        </div>
+        </div>      
     </div>
 </body>
 
