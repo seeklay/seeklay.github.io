@@ -70,11 +70,23 @@
         }
 
         title = titles[getRandomInt(2)];
-        writeTitle(title, 273);
 
-        window.addEventListener("load", () => {
+        window.addEventListener("load", () => {            
+            if (window.location.href.split('?')[1] == "flcl"){
+                document.getElementById('bg').style.background = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('flcl.jpg')";
+                document.getElementById('bg').style.backgroundSize = "cover";
+                document.getElementById('bg').style.backgroundPosition = "top";
+                document.getElementById('canvas').style.display = "none";
+                title = titles[1];
+            }
+            if (window.location.href.split('?')[1] == "ua"){
+                document.getElementById('bg').style.backgroundImage = "url('freedom-square.jpg')";
+            }
+            
             document.getElementById('title').textContent = title;
         });
+
+        writeTitle(title, 273);
 
         window.onkeydown = (e) => {
             if(e.keyCode == 123 || e.keyCode == 85 || e.keyCode == 17 || e.keyCode == 16 || e.keyCode == 74 || e.keyCode == 73) return false;
