@@ -40,6 +40,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />    
     <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque|Mansalva&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=JetBrains+Mono&display=swap" rel="stylesheet" />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EM2ZT4VLVD"></script>
@@ -72,14 +73,14 @@
         title = titles[getRandomInt(2)];
 
         window.addEventListener("load", () => {            
-            if (window.location.href.split('?')[1] == "flcl"){
+            if (window.location.href.split('?')[1].split("#")[0] == "flcl"){
                 document.getElementById('bg').style.background = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('flcl.jpg')";
                 document.getElementById('bg').style.backgroundSize = "cover";
                 document.getElementById('bg').style.backgroundPosition = "top";
-                document.getElementById('canvas').style.display = "none";
+                document.getElementById('canvas').remove();
                 title = titles[1];
             }
-            if (window.location.href.split('?')[1] == "ua"){
+            if (window.location.href.split('?')[1].split("#")[0] == "ua"){
                 document.getElementById('bg').style.backgroundImage = "url('freedom-square.jpg')";
             }
             
@@ -97,6 +98,18 @@
         };
     </script>
     <style>
+        body {
+            cursor: crosshair;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            border: 0;            
+            left: 0;
+            right: 0;
+            margin: 0;
+        }
+
         #foreground{
             -webkit-user-select: none;
             position: absolute;
@@ -154,11 +167,6 @@
             background-position: top;
             width: 100%;
             height: 100%;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
         }
         #canvas{
             opacity: 0.7;
@@ -170,15 +178,40 @@
             right: 0;
             left: 0;
         }
-        body{
-            cursor: crosshair;
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        #footer {
+            width: auto;
+            height: auto;
+            font-size: 2.3vh;
+            font-family: "JetBrains Mono";
+            background: #131414;
+            color: #3c40c6;
+            padding: 12px;
+            display: grid;
+            justify-content: center;
+
+        }
+        #scroll-down-arr {
+            color: #3c40c6;   
+        }
+        p {
+            margin: 0;
+            user-select: none;
+        }
+        sup {
+            color: gray;
+            font-size: 13px;
         }
     </style>
 </head>
 <body oncontextmenu="return false;">
     <div id="bg">
-    <canvas id="canvas"></canvas>
+        <canvas id="canvas"></canvas>
     </div>
+
     <div id="foreground">
         <span id="title">SeekLay</span>
         <div id="links">
@@ -200,7 +233,16 @@
             <a href="https://t.me/neseeklay/" data-toggle="tooltip" title="Telegram channel" class="link">
                 <i class="fa-brands fa-telegram"></i>
             </a>
-        </div>      
+        </div>
+        <a id="scroll-down-arr" class="fa-solid fa-chevron-down" href="#anchor"></a>
+    </div>
+
+    <div id="footer">
+        <a name="anchor"></a>
+        <p>Hi there, i'm <i style="font-style: inherit; cursor: grabbing;" title="(also known as @neseeklay, @seeklay1337)">@seeklay</i><sup>?</sup></p>
+        <p>16.6 led, pyt-hon, network interactions</p>        
+        <br>
+        <a href="mailto:amy@seeklay.icu">&lt;amy at seeklay.icu&gt;</a>
     </div>
 </body>
 
