@@ -96,6 +96,12 @@
         window.onkeypress = (e) => {
             if(e.keyCode == 123 || e.keyCode == 85 || e.keyCode == 17 || e.keyCode == 16 || e.keyCode == 74 || e.keyCode == 73) return false;
         };
+
+        if (/android|iphone|kindle|ipad/i.test(navigator.userAgent)){       
+            window.addEventListener("load", () => {       
+                document.getElementById('canvas').style.opacity = -0.3
+            });
+        }
     </script>
     <style>
         body {
@@ -112,6 +118,7 @@
 
         #foreground{
             -webkit-user-select: none;
+            user-select: none;
             position: absolute;
             top: 50%;
             font-size: 60px;
@@ -201,10 +208,6 @@
             margin: 0;
             user-select: none;
         }
-        sup {
-            color: gray;
-            font-size: 13px;
-        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -239,7 +242,7 @@
 
     <div id="footer">
         <a name="anchor"></a>
-        <p>Hi there, i'm <i style="font-style: inherit; cursor: grabbing;" title="(also known as @neseeklay, @seeklay1337)">@seeklay</i><sup>?</sup></p>
+        <p>Hi there, i'm @seeklay</p>
         <p>16.6 led, pyt-hon, network interactions</p>        
         <br>
         <a href="mailto:amy@seeklay.icu">&lt;amy at seeklay.icu&gt;</a>
