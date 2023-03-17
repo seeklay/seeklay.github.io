@@ -73,14 +73,14 @@
         title = titles[getRandomInt(2)];
 
         window.addEventListener("load", () => {            
-            if (window.location.href.split('?')[1].split("#")[0] == "flcl"){
+            if (window.location.href.split('?')[1] == "flcl"){
                 document.getElementById('bg').style.background = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('flcl.jpg')";
                 document.getElementById('bg').style.backgroundSize = "cover";
                 document.getElementById('bg').style.backgroundPosition = "top";
                 document.getElementById('canvas').remove();
                 title = titles[1];
             }
-            if (window.location.href.split('?')[1].split("#")[0] == "ua"){
+            if (window.location.href.split('?')[1] == "ua"){
                 document.getElementById('bg').style.backgroundImage = "url('freedom-square.jpg')";
             }
             
@@ -190,6 +190,7 @@
             display: none;
         }
         #footer {
+            cursor: auto;
             width: auto;
             height: auto;
             font-size: 2.3vh;
@@ -207,6 +208,9 @@
         p {
             margin: 0;
             user-select: none;
+        }
+        a {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -236,16 +240,20 @@
             <a href="https://t.me/neseeklay/" data-toggle="tooltip" title="Telegram channel" class="link">
                 <i class="fa-brands fa-telegram"></i>
             </a>
+            <!--
+            <a href="donate.htm" data-toggle="tooltip" title="Support me" class="link">
+                <i class="fa-solid fa-dollar-sign"></i>
+            </a>
+            -->
         </div>
-        <a id="scroll-down-arr" class="fa-solid fa-chevron-down" href="#anchor"></a>
+        <a id="scroll-down-arr" class="fa-solid fa-chevron-down" onclick="document.getElementById('footer').scrollIntoView()"></a>
     </div>
 
-    <div id="footer">
-        <a name="anchor"></a>
+    <div id="footer">        
         <p>Hi there, i'm @seeklay</p>
         <p>16.6 led, pyt-hon, network interactions</p>        
-        <br>
-        <a href="mailto:amy@seeklay.icu">&lt;amy at seeklay.icu&gt;</a>
+        <br>        
+        <a href="mailto:amy@seeklay.icu">Email me - &lt;amy at seeklay.icu&gt;</a>
     </div>
 </body>
 
