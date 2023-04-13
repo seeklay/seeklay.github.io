@@ -73,18 +73,55 @@
         title = titles[getRandomInt(2)];
 
         window.addEventListener("load", () => {            
-            if (window.location.href.split('?')[1] == "flcl"){
-                document.getElementById('bg').style.background = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('flcl.jpg')";
-                document.getElementById('bg').style.backgroundSize = "cover";
-                document.getElementById('bg').style.backgroundPosition = "top";
-                document.getElementById('canvas').remove();
-                title = titles[1];
-            }
-            if (window.location.href.split('?')[1] == "ua"){
-                document.getElementById('bg').style.backgroundImage = "url('freedom-square.jpg')";
-            }
-            
-            document.getElementById('title').textContent = title;
+            let theme = window.location.href.split('?')[1];
+
+            if (theme != undefined) {
+                console.info("Begin theme changing process...")
+
+                switch (theme) {
+                    case "flcl": {
+                        document.getElementById('bg').style.background = "linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('flcl.jpg')";
+                        document.getElementById('bg').style.backgroundSize = "cover";
+                        document.getElementById('bg').style.backgroundPosition = "top";
+                        document.getElementById('canvas').remove();
+                        title = titles[1];
+                        break;
+                    }
+
+                    case "ua": {
+                        document.getElementById('bg').style.backgroundImage = "url('freedom-square.jpg')";
+                        break;
+                    }
+
+                    case "stars": {
+                        document.getElementById('bg').style.background = "#000";
+                        document.getElementById('canvas').remove();
+                        var script = document.createElement('script');
+                        script.onload = () => {
+                            script = document.createElement('script');
+                            script.src = "stars.js";
+                            script.onload = () => {
+                                makestars();
+                            }
+                            document.head.appendChild(script);
+                        }
+                        script.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
+
+                        document.head.appendChild(script);
+                        break;
+                    }
+
+                    default: {
+                        console.info("Invalid theme!");
+                        break;
+                    }
+                        
+                }
+
+                console.info("Selected theme: " + theme)
+                document.getElementById('title').textContent = title;
+                console.info("Theme changing process end.")
+            }            
         });
 
         writeTitle(title, 273);
@@ -200,6 +237,7 @@
             padding: 12px;
             display: grid;
             justify-content: center;
+            position: relative;
 
         }
         #scroll-down-arr {
@@ -211,6 +249,15 @@
         }
         a {
             cursor: pointer;
+        }
+        #kaneki {
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            height: 100%;
+            transform: scaleX(-1);
+            opacity: 0.01;
+            mix-blend-mode: lighten;
         }
     </style>
 </head>
@@ -252,8 +299,9 @@
     <div id="footer">        
         <p>Hi there, i'm @seeklay</p>
         <p>16.6 led, pyt-hon, network interactions</p>        
-        <br>        
-        <a href="mailto:amy@seeklay.icu">Email me - &lt;amy at seeklay.icu&gt;</a>
+    
+        <a style="padding-top: 14px;" href="mailto:amy@seeklay.icu">Email me - &lt;amy at seeklay.icu&gt;</a>
+        <img id="kaneki" src="kaneki.jpeg" alt="">
     </div>
 </body>
 
