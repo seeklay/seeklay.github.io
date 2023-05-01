@@ -119,11 +119,12 @@
                 }
 
                 console.info("Selected theme: " + theme)
-                document.getElementById('title').textContent = title;
                 console.info("Theme changing process end.")
             }            
-        });
 
+            document.getElementById('title').textContent = title;
+        });
+        
         writeTitle(title, 273);
 
         window.onkeydown = (e) => {
