@@ -102,7 +102,8 @@
                             script.src = "stars.js";
                             script.onload = () => {
                                 makestars();
-                            }
+                                document.getElementsByClassName('particles-js-canvas-el')[0].style.height = "99.6vh"
+                            }                            
                             document.head.appendChild(script);
                         }
                         script.src = "https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js";
@@ -137,11 +138,36 @@
 
         if (/android|iphone|kindle|ipad/i.test(navigator.userAgent)){       
             window.addEventListener("load", () => {       
-                document.getElementById('canvas').style.opacity = 0.5
+               document.getElementById('canvas').style.opacity = 0.5;
             });
-        }
+        }        
     </script>
     <style>
+        html {
+              scroll-behavior: smooth;
+        }
+
+        @media screen and (min-width: 400px) {                        
+            #title {
+                font-size: 4.7vh;
+            }
+        }
+        @media screen and (max-width: 400px) {     
+            #title {
+                font-size: 6.9vh;
+            }
+            #links {
+                font-size: 6.32vh;                
+            }
+            #scroll-down-arr {
+                font-size: 7vh;
+            }
+        }
+        @media screen and (min-width: 400px) {                        
+            #title {
+                font-size: 4.7vh;
+            }
+        }
         body {
             cursor: crosshair;
             position: absolute;
@@ -153,26 +179,25 @@
             right: 0;
             margin: 0;
         }
-
+        
         #foreground{
             -webkit-user-select: none;
             user-select: none;
             position: absolute;
-            top: 50%;
-            font-size: 60px;
+            top: 50%;            
             left: 50%;       
             transform: translate(-50%, -50%);
             text-align: center;
             font-size: 4.3vh;
+            width: 71%;
         }
         #title{
             font-family: 'Mansalva', cursive;
             color: white;
-            font-size: 4.7vh;
+            
         }
         #links{
-            color: white;
-            text-align: center;
+            color: white;            
         }
         .link{
             margin: 3.7px;
@@ -204,6 +229,7 @@
         }
         a{
             color: inherit;
+            cursor: pointer;
             text-decoration: none;
         }
         #bg{
@@ -228,37 +254,27 @@
             display: none;
         }
         #footer {
-            cursor: auto;
+            cursor: crosshair;
             width: auto;
-            height: auto;
+            height: 100vh;
             font-size: 2.3vh;
             font-family: "JetBrains Mono";
-            background: #131414;
-            color: #3c40c6;
-            padding: 12px;
+            background: #000000;
+            color: #3c40c6;            
             display: grid;
             justify-content: center;
+            align-content: center;
             position: relative;
+            /*display: none;*/
 
         }
         #scroll-down-arr {
-            color: #3c40c6;   
+            color: #3c40c6;  
+            cursor: pointer; 
         }
         p {
             margin: 0;
             user-select: none;
-        }
-        a {
-            cursor: pointer;
-        }
-        #kaneki {
-            position: absolute;
-            bottom: 0px;
-            right: 0px;
-            height: 100%;
-            transform: scaleX(-1);
-            opacity: 0.01;
-            mix-blend-mode: lighten;
         }
     </style>
 </head>
@@ -294,15 +310,16 @@
             </a>
             -->
         </div>
-        <a id="scroll-down-arr" class="fa-solid fa-chevron-down" onclick="document.getElementById('footer').scrollIntoView()"></a>
+        <a id="scroll-down-arr" class="fa-solid fa-chevron-down" onclick="document.getElementById('footer').style.display = 'grid';document.getElementById('footer').scrollIntoView()"></a>
     </div>
 
     <div id="footer">        
         <p>Hi there, i'm @seeklay</p>
-        <p>16.6 led, pyt-hon, network interactions</p>        
+        <p>16.8 led, pyt-hon, network interactions</p>        
     
-        <a style="padding-top: 14px;" href="mailto:amy@seeklay.icu">Email me - &lt;amy at seeklay.icu&gt;</a>
-        <img id="kaneki" src="kaneki.jpeg" alt="">
+        <a style="padding-top: 14px;" href="mailto:amy@seeklay.icu">Email me - &lt;amy at seeklay.icu&gt;</a>       
+
+        <p style="padding-top: 14px; color: #fff;">watch me light the sky</p>
     </div>
 </body>
 
