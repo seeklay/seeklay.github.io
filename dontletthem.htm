@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Tears Rain</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .rain {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .rain__drop {
+            position: absolute;
+            top: -50px; /* Start above the screen */
+            height: 30px;
+            animation-name: drop;
+            animation-timing-function: cubic-bezier(0, 0.3, 0.7, 1.13);;
+            animation-iteration-count: infinite;
+            animation-duration: calc(var(--a) * var(--rainSpeed) * 1s); /* Apply rainSpeed here */
+            animation-delay: calc(var(--d) * 1s + var(--clusterDelay)); /* Stagger the delays */
+            left: calc(var(--x) * 1%);
+        }
+
+        .rain__drop path {
+            fill: rgb(204, 0, 0); /* Blood red */
+            opacity: 1; /* Initial opacity */
+            transform: scaleY(calc(var(--s) * 1.5));
+        }
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-50px); /* Start from above the screen */
+                opacity: 1; /* Fully visible at the start */
+            }
+            80% {
+                opacity: 1; /* Maintain opacity for most of the fall */
+            }
+            100% {
+                transform: translateY(100vh); /* Drops fall all the way to the bottom of the screen */
+                opacity: 0; /* Fade out as it reaches the bottom */
+            }
+        }
+        .center{
+-webkit-user-select: none;
+    user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, -50%);
+    text-align: left;
+    font-size: 4.3vh;
+    width: 71%;  
+    color: rgb(198 197 197);
+    font-family: ThunderTitan;
+} 
+body{
+  background-color: rgb(255, 255, 255);
+}
+
+@font-face {
+            font-family: ThunderTitan;
+            src: url(https://seeklay.icu/ThunderTitan-yzp5.otf);
+        }        
+    
+    </style>
+</head>
+<body>
+    <div class="rain" id="rainContainer">
+        <div class="rain" id="rainContainer"></div>
+    <div class="bg">
+        <div class="center">
+          <span>DON'T LET THEM SEE YOUR </span>
+          <br>
+          <span style="color: rgb(163, 0, 0);">BLOODTEARS</span>
+        </div>
+        </div>
+    </div>
+
+    <script>
+        const droplets = 250; // Number of droplets
+        const rainSpeed = 6; // Rain speed (0.5 = slower, 2 = faster)
+        const clusterDelay = 0.2; // Delay to create the cluster effect
+        const rainContainer = document.getElementById('rainContainer');
+
+        // Function to create a blood drop with random properties
+        function createDrop() {
+            const drop = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            drop.classList.add('rain__drop');
+            drop.setAttribute('preserveAspectRatio', 'xMinYMin');
+            drop.setAttribute('viewBox', '0 0 5 50');
+
+            // Randomize the custom properties for each drop
+            const x = Math.floor(Math.random() * 100); // Random horizontal position
+            const o = Math.random(); // Random opacity
+            const a = Math.random() + 0.5; // Random animation duration
+            const s = Math.random(); // Random scaling factor
+
+            // Set the drop properties
+            drop.style.setProperty('--x', x);
+            drop.style.setProperty('--o', o);
+            drop.style.setProperty('--a', a);
+            drop.style.setProperty('--s', s);
+            drop.style.setProperty('--rainSpeed', rainSpeed); // Apply the rainSpeed
+            drop.style.setProperty('--clusterDelay', Math.random() * clusterDelay); // Apply cluster delay
+
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('stroke', 'none');
+            path.setAttribute('d', "M 2.5,0 C 2.6949458,3.5392017 3.344765,20.524571 4.4494577,30.9559 5.7551357,42.666753 4.5915685,50 2.5,50 0.40843152,50 -0.75513565,42.666753 0.55054234,30.9559 1.655235,20.524571 2.3050542,3.5392017 2.5,0 Z");
+
+            drop.appendChild(path);
+            rainContainer.appendChild(drop);
+        }
+
+        // Create the droplets
+        for (let i = 0; i < droplets; i++) {
+            createDrop();
+        }
+    </script>
+</body>
+</html>
